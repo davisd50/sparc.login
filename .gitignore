@@ -55,3 +55,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Eclipse Files
+.project
+.pydevproject
+
+# Buildout Directories and files
+bin/
+src/
+.mr.developer.cfg
