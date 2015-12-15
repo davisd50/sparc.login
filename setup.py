@@ -7,7 +7,7 @@ setup(name='sparc.login',
       version=version,
       description="Authentication and login event packages for Python processing",
       long_description=open("README.md").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+                       open("HISTORY.txt").read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
@@ -33,6 +33,7 @@ setup(name='sparc.login',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'sparc.common',
           'sparc.cache'
           # -*- Extra requirements: -*-
       ],
