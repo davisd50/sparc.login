@@ -5,7 +5,7 @@ version = '0.0.1'
 
 setup(name='sparc.login',
       version=version,
-      description="Authentication and login event packages for Python processing",
+      description="Authentication and login packages the SPARC platform",
       long_description=open("README.md").read() + "\n" +
                        open("HISTORY.txt").read(),
       # Get more strings from
@@ -17,11 +17,12 @@ setup(name='sparc.login',
         'Natural Language :: English',
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3'
       ],
       keywords=['zca'],
       author='David Davis',
       author_email='davisd50@gmail.com',
-      url='https://github.com/davisd50/sparc.db',
+      url='https://github.com/davisd50/sparc.login',
       download_url = '',
       license='MIT',
       packages=find_packages(exclude=['ez_setup']),
@@ -33,11 +34,12 @@ setup(name='sparc.login',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'sparc.common',
-          'sparc.cache'
+          'zope.component',
+          'zope.interface',
           # -*- Extra requirements: -*-
       ],
       tests_require=[
+          'zope.testrunner',
           'sparc.testing'
       ],
       entry_points="""

@@ -4,17 +4,26 @@ from zope.interface import Attribute
 class IPrincipal(Interface):
     """An entity that can interact with a system."""
     def getId():
-        """Return globally unique String identifier for principal"""
+        """Return unique String principal identifier"""
     def __str__():
         """Informal object string representation"""
+    def __repr__():
+        """Formal object string representation"""
+    def __hash__():
+        """Hash based on Id"""
+    # The following are required to support hashing in PY 2, 3
     def __eq__(other):
         """True if equal to other"""
     def __ne__(other):
         """True if not equal to other"""
-    def __hash__():
-        """Hash based on Id"""
-    def __cmp__(other):
-        """Principal comparison based on string id."""
+    def __lt__(other):
+        """True if less than other."""
+    def __le__(other):
+        """True if less than or equal to other."""
+    def __gt__(other):
+        """True if greater than other."""
+    def __ge__(other):
+        """True if greater than or equal to other."""
 
 class IAuthenticationToken(Interface):
     """Identity validation token"""
@@ -48,8 +57,10 @@ class ICredentials(IIdentity):
     """Information to validate identity"""
     tokens = Attribute('Set of IAuthenticationToken to validate identity') 
 
-class IAuthenticationAttempt(IIdentified):
+class IAuthenticationAttempt(Interface):
     """An attempt to authenticate"""
+    def getId():
+        """Return unique String event identifier"""
     def system():
         """Returns sparc.asset.system.ISystem being logged into"""
     def datetime():
