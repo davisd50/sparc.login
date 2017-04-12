@@ -1,6 +1,6 @@
 from zope import interface
 from zope.component.factory import Factory
-from ..interfaces import IPrincipal
+from .interfaces import IPrincipal
 
 @interface.implementer(IPrincipal)
 class PrincipalFromId(object):

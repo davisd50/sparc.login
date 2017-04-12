@@ -8,4 +8,9 @@
         component=".principal.PrincipalFromIdFactory"
         />
 
+    <utility
+        name="sparc.login.principal_manager"
+        component=".manager.MemoryPrincipalManager"
+        />
+
 </configure>

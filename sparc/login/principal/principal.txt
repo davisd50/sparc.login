@@ -1,0 +1,87 @@
+============================================
+Sparc Login Principal Manager
+============================================
+
+Principals represent tokens that can be assigned to permissions.  Principals
+are very simple things...just non-mutable strings defined by the IPrincipal 
+interface.  You typically will interact with principals via a principal 
+manager.  In this way, the manager is responsible for making sure principals
+are maintained in an appropriate way.  Manager functionality is defined
+in IPrincipalManager.
+
+This package provides some sample implementations of these interfaces.
+These are memory-only implementations, so are not much use outside of testing
+and documentation.
+
+>>> from zope import component
+>>> from sparc.login.principal import IPrincipalManager
+>>> manager = component.getUtility(IPrincipalManager, u'sparc.login.principal_manager')
+
+We can create a principal
+>>> principal_1 = manager.generate()
+
+This is indeed a principal
+>>> from sparc.login.principal import IPrincipal
+>>> IPrincipal.providedBy(principal_1)
+True
+
+You can easily get the token from a IPrincipal provider
+>>> principal_1.getId()
+'1'
+
+We can also name our own tokens
+>>> principal_2 = manager.create('2')
+>>> principal_2.getId()
+'2'
+
+We can see if our principals are equivalant
+>>> principal_1 == principal_2
+False
+
+Two different Python objects that represent the same principal are also equivelant
+>>> principal_1_copy = component.createObject(u'sparc.login.principal', '1')
+>>> principal_1 == principal_1_copy
+True
+
+Even though they are in fact two different objects
+>>> id(principal_1) == id(principal_1_copy)
+False
+
+principals are hashable...so they are well behaved in containers
+>>> storage = set([principal_1, principal_1_copy, principal_2])
+>>> len(storage)
+2
+
+You can interact with many manager methods with an identifier.  Simply put
+an identifier is either the principal token, or a IPrincipal provider.
+>>> manager.get('2').getId()
+'2'
+>>> manager.get(principal_2).getId()
+'2'
+
+Getting an invalid principal from a manager throws an exception
+>>> manager.get('3')
+Traceback (most recent call last):
+...
+sparc.login.identification.exceptions.InvalidIdentification: identifier does not exist
+
+You can check for containment without throwing an exception
+>>> manager.contains('2')
+True
+
+You can remove principals from the manager
+>>> manager.remove('2')
+>>> manager.contains('2')
+False
+
+Removing invalid principals throws an exception
+>>> manager.remove('2')
+Traceback (most recent call last):
+...
+sparc.login.identification.exceptions.InvalidIdentification: identifier does not exist
+
+You can also perform a silent discard in-lieu of removing...no exception here
+>>> manager.discard('2')
+>>> manager.discard('1')
+>>> manager.contains('1')
+False

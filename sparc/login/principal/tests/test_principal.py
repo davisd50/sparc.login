@@ -5,7 +5,7 @@ import zope.testrunner
 from sparc.testing.fixture import test_suite_mixin
 from sparc.login.testing import SPARC_LOGIN_INTEGRATION_LAYER
 
-from sparc.login import IPrincipal
+from .. import IPrincipal
 
 class SparcPrincipalTestCase(unittest.TestCase):
     layer = SPARC_LOGIN_INTEGRATION_LAYER
@@ -41,7 +41,7 @@ class SparcPrincipalTestCase(unittest.TestCase):
     
 class test_suite(test_suite_mixin):
     layer = SPARC_LOGIN_INTEGRATION_LAYER
-    package = 'sparc.login'
+    package = 'sparc.login.principal'
     module = 'principal'
     
     def __new__(cls):
