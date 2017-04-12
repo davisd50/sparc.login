@@ -5,7 +5,7 @@ import zope.testrunner
 from sparc.testing.fixture import test_suite_mixin
 from sparc.login.testing import SPARC_LOGIN_INTEGRATION_LAYER
 
-from ..interfaces import IPrincipal
+from sparc.login import IPrincipal
 
 class SparcPrincipalTestCase(unittest.TestCase):
     layer = SPARC_LOGIN_INTEGRATION_LAYER
