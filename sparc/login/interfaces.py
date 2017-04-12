@@ -1,10 +1,13 @@
 from zope.interface import Interface
 from zope.interface import Attribute
 
-class IPrincipal(Interface):
-    """An entity that can interact with a system."""
+class IIdentified(Interface):
+    """An entity that can be uniquely identified among peers"""
     def getId():
-        """Return unique String principal identifier"""
+        """Return unique String identifier"""
+
+class IPrincipal(IIdentified):
+    """An entity that can interact with a system."""
     def __str__():
         """Informal object string representation"""
     def __repr__():
@@ -57,10 +60,8 @@ class ICredentials(IIdentity):
     """Information to validate identity"""
     tokens = Attribute('Set of IAuthenticationToken to validate identity') 
 
-class IAuthenticationAttempt(Interface):
+class IAuthenticationAttempt(IIdentified):
     """An attempt to authenticate"""
-    def getId():
-        """Return unique String event identifier"""
     def system():
         """Returns sparc.asset.system.ISystem being logged into"""
     def datetime():
