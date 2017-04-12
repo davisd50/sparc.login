@@ -1,8 +1,7 @@
 from zope.interface import Interface
 from zope.interface import Attribute
-from sparc.common import IIdentified
 
-class IPrincipal(IIdentified):
+class IPrincipal(Interface):
     """An entity that can interact with a system."""
     def getId():
         """Return globally unique String identifier for principal"""
