@@ -16,4 +16,3 @@ from .interfaces import IOneTimeKeyToken
 from .interfaces import IPasswordHashToken
 from .interfaces import IPasswordToken
 from .interfaces import IPersistentKeyToken
-from .interfaces import IPrincipal

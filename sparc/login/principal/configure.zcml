@@ -5,10 +5,11 @@
 
     <utility
         name="sparc.login.principal"
-        component=".principal.PrincipalFromIdFactory"
+        component=".principal.PrincipalFromTokenFactory"
         />
 
     <utility
+        provides=".IPrincipalManager"
         name="sparc.login.principal_manager"
         component=".manager.MemoryPrincipalManager"
         />

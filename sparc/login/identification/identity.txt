@@ -1,0 +1,45 @@
+============================================
+Sparc Identity Manager
+============================================
+
+An identity is an interface allowing uniqueness abstracted from implementations.
+Because that use-case is prevalent, it has been abstracted in order to 
+minimize code and testing.
+
+There are three main interfaces we deal with:
+
+IIdentified
+------------
+This is them simplest.  it only defines getId() which returns a string
+token.  This provides a convenient common method call to get the ids from
+various implementations.  It is up to implementers to insure uniqueness among
+implementations.
+
+IIdentity
+----------
+This is a bit more interesting, as it builds on IIdentified.  This allows 
+for equivalence checking and hashing at the interface level.  This means
+two different implementations that represent a common token can be treated
+as the same object for many Pythonic operations such as dict keys and 
+set membership.
+
+IIdentityManager
+-----------------
+This is an interface for generating, storing, and retrieving IIdentity 
+providers.
+
+We'll do a couple simple things here to illustrate usage....however, you
+should reference a more detailed implementation (i.e. the sparc.login.principal
+package offers a nice one) for a more detailed view.
+
+>>> from zope import component
+>>> from sparc.login.identification import IIdentityManager
+>>> manager = component.getUtility(IIdentityManager, u'sparc.login.identity_manager')
+
+We can create an identity
+>>> identity_1 = manager.generate()
+
+This is indeed a identity
+>>> from sparc.login.identification import IIdentity
+>>> IIdentity.providedBy(identity_1)
+True
