@@ -6,7 +6,7 @@ from .interfaces import IIdentityManager
 
 
 @interface.implementer(IIdentityManager)
-class IdentityManager(object):
+class MemoryIdentityManager(object):
     
     def __init__(self):
         self.counter = 0
@@ -59,4 +59,3 @@ class IdentityManager(object):
     def discard(self, identifier):
         token = self._get_token_from_identifier(identifier)
         self.identities.discard(token)
-MemoryIdentityManager = IdentityManager()

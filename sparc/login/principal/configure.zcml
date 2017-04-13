@@ -11,7 +11,7 @@
     <utility
         provides=".IPrincipalManager"
         name="sparc.login.principal_manager"
-        component=".manager.MemoryPrincipalManager"
+        factory=".manager.MemoryPrincipalManager"
         />
 
 </configure>

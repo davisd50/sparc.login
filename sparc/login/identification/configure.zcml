@@ -11,7 +11,7 @@
     <utility
         provides=".IIdentityManager"
         name="sparc.login.identity_manager"
-        component=".manager.MemoryIdentityManager"
+        factory=".manager.MemoryIdentityManager"
         />
 
 </configure>
