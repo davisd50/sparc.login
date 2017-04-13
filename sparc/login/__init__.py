@@ -1,4 +1,3 @@
-from .interfaces import IAnsweredQuestionToken
 from .interfaces import IAttemptFailed
 from .interfaces import IAttemptFailedInvalidAuthenticationToken
 from .interfaces import IAttemptFailedInvalidCrendentials
@@ -9,10 +8,3 @@ from .interfaces import IAttemptSucceededUnauthorized
 from .interfaces import IAuthenticationAttempt
 from .interfaces import IAuthenticationAttempts
 from .interfaces import IAuthenticationResult
-from .interfaces import IAuthenticationToken
-from .interfaces import ICredentials
-from .interfaces import IIdentity
-from .interfaces import IOneTimeKeyToken
-from .interfaces import IPasswordHashToken
-from .interfaces import IPasswordToken
-from .interfaces import IPersistentKeyToken
