@@ -1,38 +1,5 @@
 from zope.interface import Interface
-from zope.interface import Attribute
 from .identification import IIdentified
-
-class IAuthenticationToken(Interface):
-    """Identity validation token"""
-    token = Attribute('Token that attempts to validate identity')
-
-class IPasswordToken(IAuthenticationToken):
-    """A password"""
-
-class IPasswordHashToken(IAuthenticationToken):
-    """A hashed password"""
-
-class IPersistentKeyToken(IAuthenticationToken):
-    """A identifier used as an authentication token (i.e. browser cookie)
-    
-    Carefull: this is not a session id (which would be considered an identity).
-    This is intended for the case of when a site realizes your logging in from a
-    new asset and asks if it can 'remember' you on that asset.
-    """
-
-class IOneTimeKeyToken(IAuthenticationToken):
-    """A one time key for identity validation (i.e. 2-factor auth)"""
-
-class IAnsweredQuestionToken(IAuthenticationToken):
-    """A token representing an answered question"""
-
-class IIdentity(Interface):
-    """Identity token"""
-    identity = Attribute('String identity for authentication')
-
-class ICredentials(IIdentity):
-    """Information to validate identity"""
-    tokens = Attribute('Set of IAuthenticationToken to validate identity') 
 
 class IAuthenticationAttempt(IIdentified):
     """An attempt to authenticate"""
